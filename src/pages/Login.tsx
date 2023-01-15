@@ -5,7 +5,7 @@ import '../index.css'
 
 const Login = () => {
   return (
-    <div className='flex flex-col justify-center items-center max-w-61 mt-56 mb-56 mx-auto'>
+    <div className='flex flex-col justify-center items-center max-w-61 mt-56 mb-56 mx-auto font-inter'>
         <h1 className='text-5xl'>Login App</h1>
         <a href="#" className='mb-12'>by SvetilovArtem</a>
         <div className='googleButton border-solid border-2 border-b-zinc-700 rounded-lg text-base w-px-190 max-h-px-40 p-1'>

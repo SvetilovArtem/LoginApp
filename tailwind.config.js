@@ -10,6 +10,9 @@ module.exports = {
           fontWeight: '600',
         }],
       },
+      fontFamily: {
+        'inter': ['Inter'],
+      },
     }
   },
   plugins: [],
