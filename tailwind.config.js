@@ -9,6 +9,9 @@ module.exports = {
           letterSpacing: '-0.01em',
           fontWeight: '600',
         }],
+        'xl': ['11px', {
+          letterSpacing: '-0.01em',
+        }],
       },
       fontFamily: {
         'inter': ['Inter'],

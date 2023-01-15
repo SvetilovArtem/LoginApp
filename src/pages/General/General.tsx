@@ -1,8 +1,15 @@
 import React from 'react'
+import Content from '../../components/Content/Content'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import '../../index.css'
+
 
 const General = () => {
   return (
-    <div>General</div>
+    <div className='flex font-inter general'>
+      <Sidebar />
+      <Content />
+    </div>
   )
 }
 
