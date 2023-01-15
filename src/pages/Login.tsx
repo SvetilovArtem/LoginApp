@@ -8,7 +8,7 @@ const Login = () => {
     <div className='flex flex-col justify-center items-center max-w-61 mt-56 mb-56 mx-auto'>
         <h1 className='text-5xl'>Login App</h1>
         <a href="#" className='mb-12'>by SvetilovArtem</a>
-        <div className='button border-solid border-1 border-b-zinc-700 rounded-lg text-base w-px-190 max-h-px-40 p-1'>
+        <div className='googleButton border-solid border-2 border-b-zinc-700 rounded-lg text-base w-px-190 max-h-px-40 p-1'>
           <Button text='Sign in with Google' type='button'>
               <SvgIconCreator type='google' />
           </Button>
