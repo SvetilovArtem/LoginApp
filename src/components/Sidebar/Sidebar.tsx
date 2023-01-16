@@ -6,9 +6,9 @@ const Sidebar = () => {
   return (
     <div className='max-w-xs p-4 sidebar'>
         <User />
-        <div className='flex gap-2 items-center bg-gray-300 w-11/12'>
+        <div className='flex gap-2 items-center bg-gray-100 w-11/12 p-1 rounded-[7px]'>
             <SvgIconCreator type='mech' />
-            <span>General</span>
+            <span className='text-slate-600'>General</span>
         </div>
     </div>
   )
