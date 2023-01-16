@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../index.css'
 import Form from '../Form/Form'
+import '../../index.css'
 
 const Content = () => {
   return (
