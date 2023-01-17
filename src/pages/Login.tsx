@@ -1,6 +1,5 @@
 import Button from '../components/Button/Button'
 import SvgIconCreator from '../icons/SvgIconCreator'
-import '../index.css'
 
 const Login = () => {
 

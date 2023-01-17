@@ -1,13 +1,12 @@
 import React from 'react'
-import '../../index.css'
 import Button from '../Button/Button'
 import Field from '../Field/Field'
 import TextArea from '../TextArea/TextArea'
 
 const Form = () => {
   return (
-    <form className='flex flex-col max-w-md' onSubmit={() => {}}>
-        <div className='flex justify-between max-w-md gap-1'>
+    <form className='flex flex-col w-auto bg-white p-4 max-w-lg' onSubmit={() => {}}>
+        <div className='flex justify-between'>
             <Field type='text' name='firstName' label='First Name' />
             <Field type='text' name='lastName' label='Last Name' />
         </div>

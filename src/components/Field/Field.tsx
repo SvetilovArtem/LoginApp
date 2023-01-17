@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../index.css'
 
 interface FieldProps {
     type: string,
@@ -10,8 +9,8 @@ interface FieldProps {
 const Field = ({type, label, name}:FieldProps) => {
   return (
     <div className='flex flex-col mb-3'>
-        <label htmlFor={name} style={{fontSize: '11px'}}>{label}</label>
-        <input type={type} name={name} className='rounded-[7px] border border-gray-300 h-8' />
+        <label htmlFor={name} style={{fontSize: '14px'}}>{label}</label>
+        <input type={type} name={name} className='rounded-[7px] border border-gray-300 h-8 px-2' />
     </div>
   )
 }

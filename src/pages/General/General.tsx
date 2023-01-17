@@ -1,7 +1,7 @@
 import React from 'react'
 import Content from '../../components/Content/Content'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import '../../index.css'
+import './General.module.scss'
 
 
 const General = () => {
