@@ -7,7 +7,6 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background: #e5e5e5;
 }
 
 code {
@@ -17,12 +16,6 @@ code {
 h1, h2, h3, h4, p, ul {
   margin: 0;
   padding: 0;
-}
-
-/* LOGIN PAGE */
-.googleButton svg {
-  width: 20px;
-  height: 20px;
 }
 
 /* GENERAL PROFILE */
