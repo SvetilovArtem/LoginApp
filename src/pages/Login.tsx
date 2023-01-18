@@ -1,9 +1,9 @@
-import { getRedirectResult, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import GoogleButton from '../components/Button/GoogleButton'
 import { auth, provider } from '../firebaseConfig/firebase';
 import SvgIconCreator from '../icons/SvgIconCreator'
-import { setIsAuth } from '../redux/userSlice';
+import { setIsAuth, setUserEmail, setUserFullName, setUserImg } from '../redux/userSlice';
 
 const Login = () => {
 
@@ -12,8 +12,10 @@ const Login = () => {
   const loginHandler = () => {
     signInWithPopup(auth, provider)
       .then(resp => {
-        const verified = resp.user.emailVerified
-        dispatch(setIsAuth(verified))
+        dispatch(setUserImg(resp.user.photoURL))
+        dispatch(setUserEmail(resp.user.email))
+        dispatch(setIsAuth(resp.user.emailVerified))
+        dispatch(setUserFullName(resp.user.displayName))
       })
   }
 
