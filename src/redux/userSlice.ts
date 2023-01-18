@@ -1,21 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface UserState {
-  value: number
+  isAuth: boolean
 }
 
 const initialState: UserState = {
-  value: 0,
+  isAuth: false
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-
+    setIsAuth: (state, action) => {
+      state.isAuth = action.payload
+    }
   },
 })
 
-export const {  } = userSlice.actions
+export const { setIsAuth } = userSlice.actions
 
 export default userSlice.reducer
