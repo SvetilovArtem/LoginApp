@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import MaskedInput from 'react-text-mask'
 
 import styles from './Field.module.scss'
 
 interface PhoneFieldProps {
     onChangeHandler: (e:React.ChangeEvent<HTMLInputElement>, name: string) => void,
-    value: string
+    value: string,
+    error: boolean,
+    setError: (e:boolean) => void
 }
 
-const PhoneField = ({ onChangeHandler, value}:PhoneFieldProps) => {
+const PhoneField = ({ onChangeHandler, value, error, setError }:PhoneFieldProps) => {
 
-  const [error, setError] = useState(false)
   let inputValue
 
   const validateHandler = (e:React.ChangeEvent<HTMLInputElement>) => {

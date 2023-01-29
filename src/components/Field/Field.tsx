@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import styles from './Field.module.scss'
 
@@ -7,12 +7,12 @@ interface FieldProps {
     label: string,
     name: string,
     onChangeHandler: (e:React.ChangeEvent<HTMLInputElement>, name: string) => void,
-    value: string
+    value: string,
+    error: boolean,
+    setError: (e:boolean) => void
 }
 
-const Field = ({type, label, name, onChangeHandler, value}:FieldProps) => {
-
-  const [error, setError] = useState(false)
+const Field = ({type, label, name, onChangeHandler, value, error, setError}:FieldProps) => {
 
   const validate = (e:any) => {
 

@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../redux/store'
 import { setCity, setFirstName, setLastName, setPhone } from '../../redux/userSlice'
 import Button from '../Button/Button'
@@ -16,10 +15,17 @@ const Form = () => {
   const phone = useSelector((state:RootState) => state.user.phone)
   const dispatch:AppDispatch = useDispatch()
 
-  const [disabled, setDisabled] = useState(false)
+  const [firstNameError, setFirstNameError] = useState(false)
+  const [lastNameError, setLastNameError] = useState(false)
+  const [cityError, setCityError] = useState(false)
+  const [phoneError, setPhoneError] = useState(false)
+
+  const [errors, setErrors] = useState(false)
+
 
   const setValue = (e:React.ChangeEvent<HTMLInputElement>, name: string) => {
     e.preventDefault()
+
     if(name === 'firstName') {
       dispatch(setFirstName(e.currentTarget.value))
     } else if(name === 'lastName') {
@@ -30,21 +36,24 @@ const Form = () => {
       dispatch(setPhone(e.currentTarget.value))
     }    
   }
+  useEffect(() => {
+    firstNameError || lastNameError || cityError || phoneError ? setErrors(true) : setErrors(false)
+  },[firstNameError, lastNameError, cityError, phoneError])
 
   return (
     <form className={styles.form} onSubmit={() => {}}>
         <div className='flex justify-between'>
-            <Field type='text' name='firstName' label='First Name' value={firstName} onChangeHandler={setValue} />
-            <Field type='text' name='lastName' label='Last Name' value={lastName} onChangeHandler={setValue} />
+            <Field type='text' name='firstName' label='First Name' value={firstName} onChangeHandler={setValue} error={firstNameError} setError={setFirstNameError} />
+            <Field type='text' name='lastName' label='Last Name' value={lastName} onChangeHandler={setValue} error={lastNameError} setError={setLastNameError} />
         </div>
-        <Field type='text' name='city' label='City' value={city} onChangeHandler={setValue} />
+        <Field type='text' name='city' label='City' value={city} onChangeHandler={setValue} error={cityError} setError={setCityError} />
         <TextArea label='About' name='about' />
-        <PhoneField value={phone} onChangeHandler={setValue} />
-        <div className={disabled ? styles.disabledButton : styles.saveButton} onClick={(e) => {
+        <PhoneField value={phone} onChangeHandler={setValue} error={phoneError} setError={setPhoneError} />
+        <div className={errors ? styles.disabledButton : styles.saveButton} onClick={(e) => {
           e.preventDefault()
 
           }}>
-            <Button type='submit' text='Save' disabled={disabled} />
+            <Button type='submit' text='Save' disabled={errors} />
         </div>
     </form>
   )

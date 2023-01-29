@@ -13,7 +13,7 @@ const User = ({ img, email, name }:UserProps) => {
         <img src={img ? img : "https://klike.net/uploads/posts/2019-03/1551511804_3.jpg"} alt="" className='rounded-full w-10 h-10'/>
         <div >
             <div>{name ? name : 'Eric Frusciante'}</div>
-            <a href={email ? email : 'mailto:eric@gmail.com'} className='text-neutral-500'>{email ? email : 'eric@gmail.com'}</a>
+            <a href={email ? `mailto:${email}` : 'mailto:eric@gmail.com'} className='text-neutral-500'>{email ? email : 'eric@gmail.com'}</a>
         </div>
     </div>
   )
