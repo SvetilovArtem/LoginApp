@@ -5,12 +5,13 @@ interface ButtonProps {
     text?: string,
     type?: 'button' | 'submit' | 'reset' | undefined,
     children?: React.ReactNode
-    onClickHandler?: () => void
+    onClickHandler?: () => void,
+    disabled: boolean
 }
 
-const Button = ({text, type, onClickHandler, children}:ButtonProps) => {
+const Button = ({text, type, onClickHandler, children, disabled}:ButtonProps) => {
   return (
-    <button type={type} onClick={onClickHandler} className={styles.button}>{children}{text}</button>
+    <button type={type} onClick={onClickHandler} disabled={disabled} className={styles.button}>{children}{text}</button>
   )
 }
 

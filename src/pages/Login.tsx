@@ -12,6 +12,7 @@ const Login = () => {
   const loginHandler = () => {
     signInWithPopup(auth, provider)
       .then(resp => {
+        console.log(resp)
         dispatch(setUserImg(resp.user.photoURL))
         dispatch(setUserEmail(resp.user.email))
         dispatch(setIsAuth(resp.user.emailVerified))

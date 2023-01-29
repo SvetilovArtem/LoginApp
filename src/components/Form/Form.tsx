@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { firestore } from '../../firebaseConfig/firebase'
 import { AppDispatch, RootState } from '../../redux/store'
 import { setCity, setFirstName, setLastName, setPhone } from '../../redux/userSlice'
 import Button from '../Button/Button'
 import Field from '../Field/Field'
+import PhoneField from '../Field/PhoneField'
 import TextArea from '../TextArea/TextArea'
+import styles from './Form.module.scss'
 
 const Form = () => {
   const firstName = useSelector((state:RootState) => state.user.firstName)
@@ -15,7 +16,9 @@ const Form = () => {
   const phone = useSelector((state:RootState) => state.user.phone)
   const dispatch:AppDispatch = useDispatch()
 
-  const setValue = (e:any, name: string) => {
+  const [disabled, setDisabled] = useState(false)
+
+  const setValue = (e:React.ChangeEvent<HTMLInputElement>, name: string) => {
     e.preventDefault()
     if(name === 'firstName') {
       dispatch(setFirstName(e.currentTarget.value))
@@ -29,20 +32,19 @@ const Form = () => {
   }
 
   return (
-    <form className='flex flex-col w-auto bg-white p-4 max-w-lg' onSubmit={() => {}}>
+    <form className={styles.form} onSubmit={() => {}}>
         <div className='flex justify-between'>
             <Field type='text' name='firstName' label='First Name' value={firstName} onChangeHandler={setValue} />
             <Field type='text' name='lastName' label='Last Name' value={lastName} onChangeHandler={setValue} />
         </div>
         <Field type='text' name='city' label='City' value={city} onChangeHandler={setValue} />
         <TextArea label='About' name='about' />
-        <Field type='tel' name='phone' label='Phone' value={phone} onChangeHandler={setValue} />
-        <div className='bg-black text-white rounded-[7px] p-3' onClick={(e) => {
+        <PhoneField value={phone} onChangeHandler={setValue} />
+        <div className={disabled ? styles.disabledButton : styles.saveButton} onClick={(e) => {
           e.preventDefault()
-          console.log()
 
           }}>
-            <Button type='submit' text='Save' />
+            <Button type='submit' text='Save' disabled={disabled} />
         </div>
     </form>
   )

@@ -44,7 +44,7 @@ export const userSlice = createSlice({
       state.about = action.payload
     },
     setPhone: (state, action) => {
-      state.phone = action.payload
+      state.phone =  action.payload
     },
     setUserImg: (state, action) => {
       state.userImg = action.payload
