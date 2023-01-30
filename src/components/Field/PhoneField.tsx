@@ -12,8 +12,6 @@ interface PhoneFieldProps {
 
 const PhoneField = ({ onChangeHandler, value, error, setError }:PhoneFieldProps) => {
 
-  let inputValue
-
   const validateHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     const number = RegExp(/[^0-9a-z\(\)\-\+\s]/i)
     if(number.test(e.currentTarget.value) || e.currentTarget.value.length <= 1) {
@@ -21,8 +19,6 @@ const PhoneField = ({ onChangeHandler, value, error, setError }:PhoneFieldProps)
     } else {
         setError(false)
     }
-    inputValue = '+' + value
-    console.log(inputValue)
   }
 
   return (
@@ -36,7 +32,7 @@ const PhoneField = ({ onChangeHandler, value, error, setError }:PhoneFieldProps)
           className={error ? styles.error : styles.input}
           maxLength={18}
           type='tel' 
-          value={inputValue} 
+          value={value} 
           name='phone'
           onBlur={e => validateHandler(e)}
           onChange={(e) => {

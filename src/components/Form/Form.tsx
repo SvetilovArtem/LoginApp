@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { FirebaseApp, saveUserToFirebaseHandler } from '../../firebaseConfig/firebase'
 import { AppDispatch, RootState } from '../../redux/store'
 import { setCity, setFirstName, setLastName, setPhone } from '../../redux/userSlice'
 import Button from '../Button/Button'
 import Field from '../Field/Field'
 import PhoneField from '../Field/PhoneField'
 import TextArea from '../TextArea/TextArea'
+
 import styles from './Form.module.scss'
 
 const Form = () => {
@@ -13,6 +15,7 @@ const Form = () => {
   const lastName = useSelector((state:RootState) => state.user.lastName)
   const city = useSelector((state:RootState) => state.user.city)
   const phone = useSelector((state:RootState) => state.user.phone)
+  const about = useSelector((state:RootState) => state.user.about)
   const dispatch:AppDispatch = useDispatch()
 
   const [firstNameError, setFirstNameError] = useState(false)
@@ -20,8 +23,15 @@ const Form = () => {
   const [cityError, setCityError] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
 
-  const [errors, setErrors] = useState(false)
+  let user = {
+    firstName: firstName,
+    lastName: lastName,
+    city: city,
+    about: about,
+    phone: phone
+  }
 
+  const [errors, setErrors] = useState(true)
 
   const setValue = (e:React.ChangeEvent<HTMLInputElement>, name: string) => {
     e.preventDefault()
@@ -38,6 +48,7 @@ const Form = () => {
   }
   useEffect(() => {
     firstNameError || lastNameError || cityError || phoneError ? setErrors(true) : setErrors(false)
+    console.log(FirebaseApp)
   },[firstNameError, lastNameError, cityError, phoneError])
 
   return (
@@ -51,8 +62,8 @@ const Form = () => {
         <PhoneField value={phone} onChangeHandler={setValue} error={phoneError} setError={setPhoneError} />
         <div className={errors ? styles.disabledButton : styles.saveButton} onClick={(e) => {
           e.preventDefault()
-
-          }}>
+          saveUserToFirebaseHandler(user)
+        }}>
             <Button type='submit' text='Save' disabled={errors} />
         </div>
     </form>
