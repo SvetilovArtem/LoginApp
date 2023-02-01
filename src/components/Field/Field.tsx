@@ -60,6 +60,7 @@ const Field = ({type, label, name, onChangeHandler, value, error, setError}:Fiel
             onChangeHandler(e, name)
             validate(e)
           }}
+          data-testid="field-element"
           />
     </div>
   )

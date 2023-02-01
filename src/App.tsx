@@ -2,18 +2,16 @@ import React from 'react';
 import General from './pages/General/General';
 import Login from './pages/Login';
 import './index.css'
-import { useSelector } from 'react-redux';
-import { RootState } from './redux/store';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  const isAuth = useSelector((state:RootState) => state.user.isAuth)
-  
+
   return (
     <div className="App">
-      {
-        isAuth ? <General /> : <Login />
-      }
-      
+      <Routes>
+        <Route path={'/'} element={<Login />} />
+        <Route path={'/general'} element={<General />} />
+      </Routes> 
     </div>
   );
 }

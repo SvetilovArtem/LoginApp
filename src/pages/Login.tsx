@@ -1,22 +1,26 @@
 import { signInWithPopup } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import GoogleButton from '../components/Button/GoogleButton'
 import { auth, provider } from '../firebaseConfig/firebase';
 import SvgIconCreator from '../icons/SvgIconCreator'
+
 import { setIsAuth, setUserEmail, setUserFullName, setUserImg } from '../redux/userSlice';
 
 const Login = () => {
 
   const dispatch = useDispatch()
 
+  const navigate = useNavigate()
+
   const loginHandler = () => {
     signInWithPopup(auth, provider)
       .then(resp => {
-        console.log(resp)
         dispatch(setUserImg(resp.user.photoURL))
         dispatch(setUserEmail(resp.user.email))
         dispatch(setIsAuth(resp.user.emailVerified))
         dispatch(setUserFullName(resp.user.displayName))
+        navigate('/general')
       })
   }
 

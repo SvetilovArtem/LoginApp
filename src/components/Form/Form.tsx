@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FirebaseApp, saveUserToFirebaseHandler } from '../../firebaseConfig/firebase'
+import { saveUserToFirebaseHandler } from '../../firebaseConfig/firebase'
 import { AppDispatch, RootState } from '../../redux/store'
 import { setCity, setFirstName, setLastName, setPhone } from '../../redux/userSlice'
 import Button from '../Button/Button'
@@ -48,7 +48,6 @@ const Form = () => {
   }
   useEffect(() => {
     firstNameError || lastNameError || cityError || phoneError ? setErrors(true) : setErrors(false)
-    console.log(FirebaseApp)
   },[firstNameError, lastNameError, cityError, phoneError])
 
   return (
@@ -63,6 +62,7 @@ const Form = () => {
         <div className={errors ? styles.disabledButton : styles.saveButton} onClick={(e) => {
           e.preventDefault()
           saveUserToFirebaseHandler(user)
+          console.log(user)
         }}>
             <Button type='submit' text='Save' disabled={errors} />
         </div>

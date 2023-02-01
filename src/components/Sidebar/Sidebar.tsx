@@ -10,7 +10,7 @@ const Sidebar = () => {
   const email = useSelector((state:RootState) => state.user.userEmail)
   const name = useSelector((state:RootState) => state.user.userFullName)
   return (
-    <div className='max-w-xs p-4 sidebar bg-white'>
+    <div className='max-w-xs sidebar bg-white'>
         <User img={img} email={email} name={name} />
         <div className='flex gap-2 items-center bg-gray-100 w-11/12 py-1 px-4 rounded-[7px]'>
             <SvgIconCreator type='mech' />

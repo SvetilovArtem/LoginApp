@@ -1,3 +1,6 @@
 .general {
     height: 100vh;
   }
+.signoutButton {
+  @apply bg-transparent text-gray-400 border-gray-600 border inline-block h-11 w-44 rounded-lg;
+}
