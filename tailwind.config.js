@@ -13,9 +13,9 @@ module.exports = {
           letterSpacing: '-0.01em',
         }],
       },
-      fontFamily: {
-        'inter': ['Inter'],
-      },
+      // fontFamily: {
+      //   'inter': ['Inter'],
+      // },
     }
   },
   plugins: [],

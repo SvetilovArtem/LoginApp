@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@400;600&display=swap');
+
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 h1, h2, h3, h4, p, ul {
   margin: 0;
   padding: 0;
@@ -22,4 +19,7 @@ h1, h2, h3, h4, p, ul {
 
 .content {
   width: 75%;
+}
+.App {
+  font-family: 'Shantell Sans', sans-serif;
 }

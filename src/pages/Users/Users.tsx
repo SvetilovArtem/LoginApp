@@ -1,11 +1,40 @@
-import React from 'react'
-import { getUsers } from '../../firebaseConfig/firebase'
+import React, { useEffect, useState } from "react";
+import UserItem from "../../components/UserItem/UserItem";
+import { getUsers } from "../../firebaseConfig/firebase";
+import { User } from "../../types/User";
+
+import styles from './Users.module.scss'
 
 const Users = () => {
-    console.log(getUsers().then(resp => console.log(JSON.stringify(resp))))
-  return (
-    <div>Users</div>
-  )
-}
+  const [usersList, setUsersList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-export default Users
+  useEffect(() => {
+    setIsLoading(true);
+    getUsers().then((data: any) => {
+      if (data) {
+        setUsersList(data);
+        setIsLoading(false);
+      }
+    });
+  }, []);
+
+  return !isLoading ? (
+    <div className={styles.users}>
+      {usersList.map((e: User, index) => (
+        <UserItem
+          firstName={e.firstName}
+          lastName={e.lastName}
+          about={e.about}
+          city={e.city}
+          phone={e.phone}
+          index={index + 1}
+        />
+      ))}
+    </div>
+  ) : (
+    <div className={styles.loading}>Loading...</div>
+  );
+};
+
+export default Users;

@@ -52,7 +52,7 @@ const Form = () => {
 
   return (
     <form className={styles.form} onSubmit={() => {}}>
-        <div className='flex justify-between'>
+        <div className='w-[480px]'>
             <Field type='text' name='firstName' label='First Name' value={firstName} onChangeHandler={setValue} error={firstNameError} setError={setFirstNameError} />
             <Field type='text' name='lastName' label='Last Name' value={lastName} onChangeHandler={setValue} error={lastNameError} setError={setLastNameError} />
         </div>

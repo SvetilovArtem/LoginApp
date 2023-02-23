@@ -40,13 +40,9 @@ const signOutHandler = (dispatch:AppDispatch, navigate: NavigateFunction) => {
 
 
 const getUsers = async () => {
-    const querySnapshot = await getDocs(collection(firestore, "users"));
-    const docData = querySnapshot.docs
-
-    console.log(docData[0])
-    // querySnapshot.forEach((doc) => {
-    //   console.log(doc.data);
-    // });
+    const mySnapshot = await getDocs(collection(firestore, "users"));
+    const usersList = mySnapshot.docs.map(user => user.data())
+    return usersList
 }
 
 export { firestore, auth, provider, FirebaseApp, saveUserToFirebaseHandler, signOutHandler, getUsers }

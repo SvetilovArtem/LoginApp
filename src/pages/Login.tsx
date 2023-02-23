@@ -21,7 +21,7 @@ const Login = () => {
         dispatch(setIsAuth(resp.user.emailVerified))
         dispatch(setUserFullName(resp.user.displayName))
         navigate('/general')
-      })
+    })
   }
 
   return (
