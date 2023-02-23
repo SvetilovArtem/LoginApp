@@ -1,23 +1,21 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import Content from '../../components/Content/Content'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import { signOutHandler } from '../../firebaseConfig/firebase'
-import { AppDispatch, RootState } from '../../redux/store'
+import { AppDispatch } from '../../redux/store'
 import styles from './General.module.scss'
 
 
 const General = () => {
-  const isAuth = useSelector((state:RootState) => state.user.isAuth)
   const navigate = useNavigate()
 
   const dispatch:AppDispatch = useDispatch()
 
   const onSignOutHandler = () => {
-    signOutHandler(dispatch, navigate, isAuth)
+    signOutHandler(dispatch, navigate)
   }
 
   return (
