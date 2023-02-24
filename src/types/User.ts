@@ -3,5 +3,6 @@ export type User = {
     lastName: string,
     city: string,
     about: string,
-    phone: string
+    phone: string,
+    id?: string
 }

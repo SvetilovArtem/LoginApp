@@ -1,9 +1,17 @@
 .userItem {
-    width: 310px;
-    padding: 28px 15px;
-    background-color: #e3e3e3;
-    border-radius: 8px;
+    @apply w-[310px] px-[15px] pt-[28px] pb-[45px] bg-gray-300 rounded-[8px] relative;
+
     .name {
         font-size: 25px
+    }
+    .number {
+        @apply absolute bottom-[12px] right-[12px] text-red-500 border-solid border-[2px] border-red-500 rounded-[50%] w-[35px] h-[35px] flex justify-center items-center;
+    }
+    .removeButton {
+        @apply absolute bottom-[12px] left-[12px] px-[6px] text-red-500 border-solid border-[2px] border-red-500 cursor-pointer;
+
+        &:active {
+            @apply scale-95;
+        }
     }
 }

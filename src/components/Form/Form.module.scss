@@ -3,6 +3,9 @@
 
     .saveButton {
         @apply bg-black text-white rounded-[7px] p-3;
+        &:active {
+            @apply scale-95; 
+        }
     }
     .disabledButton {
         @apply bg-gray-400 text-white rounded-[7px] outline-black outline-1 outline p-3; 

@@ -1,7 +1,7 @@
 import { AppDispatch } from './../redux/store';
 import { firebaseConfig } from "./firebaseConfig";
 import { initializeApp } from 'firebase/app'
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore/lite";
+import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore } from "firebase/firestore/lite";
 import { getAuth, GoogleAuthProvider, signOut } from "firebase/auth";
 import { User } from "../types/User";
 import { setIsAuth } from '../redux/userSlice';
@@ -38,12 +38,17 @@ const signOutHandler = (dispatch:AppDispatch, navigate: NavigateFunction) => {
     ).catch(error => console.log(error))
 }
 
+const removeUserFromFirebaseHandler = (id:string) => {
+    deleteDoc(doc(firestore, "users", id))
+}
 
 const getUsers = async () => {
     const mySnapshot = await getDocs(collection(firestore, "users"));
     const usersList = mySnapshot.docs.map(user => user.data())
-    return usersList
+    const usersIdList = mySnapshot.docs.map(user => user.id)
+    
+    return { usersList, usersIdList }
 }
 
-export { firestore, auth, provider, FirebaseApp, saveUserToFirebaseHandler, signOutHandler, getUsers }
+export { firestore, auth, provider, FirebaseApp, saveUserToFirebaseHandler, signOutHandler, getUsers, removeUserFromFirebaseHandler }
 

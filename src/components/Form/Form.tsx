@@ -16,6 +16,9 @@ const Form = () => {
   const city = useSelector((state:RootState) => state.user.city)
   const phone = useSelector((state:RootState) => state.user.phone)
   const about = useSelector((state:RootState) => state.user.about)
+
+  const [isAdded, setIsAdded] = useState(false)
+
   const dispatch:AppDispatch = useDispatch()
 
   const [firstNameError, setFirstNameError] = useState(false)
@@ -61,11 +64,15 @@ const Form = () => {
         <PhoneField value={phone} onChangeHandler={setValue} error={phoneError} setError={setPhoneError} />
         <div className={errors ? styles.disabledButton : styles.saveButton} onClick={(e) => {
           e.preventDefault()
-          saveUserToFirebaseHandler(user)
-          console.log(user)
+          saveUserToFirebaseHandler(user).then(() => {
+            setIsAdded(true)
+            setTimeout(() => setIsAdded(false), 3000)
+          })
+
         }}>
             <Button type='submit' text='Save' disabled={errors} />
         </div>
+        {isAdded && <div className='text-green-300 mt-[15px]'>User saved!</div>}
     </form>
   )
 }

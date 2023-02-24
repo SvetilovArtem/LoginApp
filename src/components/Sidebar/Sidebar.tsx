@@ -17,7 +17,6 @@ const Sidebar = () => {
     {title: 'Users', to: '/general/users'}
   ]
   const onActiveItem = (title:string) => {
-    console.log(title)
     setActive(title)
   }
   return (
