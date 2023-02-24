@@ -1,5 +1,8 @@
 .sidebarItem {
     @apply flex gap-2 items-center bg-gray-100 w-11/12 py-1 px-4 rounded-[7px] mb-[25px] cursor-pointer;
+    &:active {
+        @apply scale-[0.94] transition-all;
+    }
 }
 .active {
     @apply bg-red-300;

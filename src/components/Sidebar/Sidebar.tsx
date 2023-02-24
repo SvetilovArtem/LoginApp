@@ -10,7 +10,7 @@ const Sidebar = () => {
   const email = useSelector((state:RootState) => state.user.userEmail)
   const name = useSelector((state:RootState) => state.user.userFullName)
 
-  const [active, setActive] = useState('')
+  const [active, setActive] = useState('General')
 
   const items = [
     {title: 'General', to: '/general/saveform'},

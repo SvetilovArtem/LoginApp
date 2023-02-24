@@ -31,7 +31,7 @@ const General = () => {
           dispatch(setUserFullName(resp.user.displayName))
           navigate('/general')
     })
-  }, [dispatch, isAuth, navigate])
+  }, [])
 
   return (
     <div className='flex font-inter general p-4'>

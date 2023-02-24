@@ -20,7 +20,7 @@ const Login = () => {
         dispatch(setUserEmail(resp.user.email))
         dispatch(setIsAuth(resp.user.emailVerified))
         dispatch(setUserFullName(resp.user.displayName))
-        navigate('/general')
+        navigate('/general/saveform')
     })
   }
 
